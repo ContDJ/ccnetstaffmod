@@ -1,24 +1,30 @@
 package net.contt.ccnetstaffmod;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
+import net.minecraft.text.HoverEvent;
+import net.minecraft.text.Style;
+import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Ccnetstaffmod implements ModInitializer {
+public class Ccnetstaffmod implements ClientModInitializer {
 	public static final String MOD_ID = "ccnetstaffmod";
-
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+	public void onInitializeClient() {
+		ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, callback) -> {
+			String messageContent = message.getString();
 
-		LOGGER.info("Hello Fabric world!");
+			if (messageContent.startsWith("[Silent]") || messageContent.startsWith("[SC]")) {
+				Text hoverText = Text.literal(messageContent);
+				Text notification = Text.literal("CCNet Staff Mod » New Notification [Hover to see]")
+						.setStyle(Style.EMPTY.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText)));
+
+			}
+			return true;
+		});
 	}
 }

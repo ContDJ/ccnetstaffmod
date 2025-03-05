@@ -1,25 +1,28 @@
 {
 	"schemaVersion": 1,
 	"id": "ccnetstaffmod",
-	"version": "${version}",
+	"version": "1.0.0",
 	"name": "ccnetstaffmod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Streamlines moderation by filtering out non-public information!",
 	"authors": [
-		"Me!"
+		"Contt"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/ContDJ/ccnetstaffmod/",
+		"sources": "https://github.com/ContDJ/ccnetstaffmod/"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/ccnetstaffmod/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"net.contt.ccnetstaffmod.Ccnetstaffmod"
 		],
 		"fabric-datagen": [
 			"net.contt.ccnetstaffmod.CcnetstaffmodDataGenerator"
+		],
+		"client": [
+			"net.contt.ccnetstaffmod.ccnetstaffmodClient"
 		]
 	},
 	"mixins": [
