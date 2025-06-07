@@ -12,14 +12,17 @@ public class MessageHandler {
     public static boolean handleMessage(Text message, boolean overlay) {
         String messageContent = message.getString();
         boolean isStaffMessage = (messageContent.startsWith("(A)") && messageContent.contains("→")) ||
-                                 messageContent.matches("^\\[[^\\]]+\\] .*».*") ||
-                                 messageContent.startsWith("[Silent]");
+                (messageContent.matches("^\\[[^\\]]+\\] .*».*") && !messageContent.startsWith("[Discord]")) ||
+                messageContent.startsWith("[Silent]");
 
         if (concealMessages && isStaffMessage) {
             Text hoverText = Text.literal(messageContent).setStyle(Style.EMPTY.withColor(Formatting.AQUA));
-            Text notification = Text.literal("Staff Message")
-                    .setStyle(Style.EMPTY.withColor(Formatting.GREEN))
-                    .append(Text.literal(" [Hover to see]").setStyle(Style.EMPTY.withColor(Formatting.AQUA).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))));
+            Text notification = Text.literal("CC")
+                    .setStyle(Style.EMPTY.withColor(Formatting.WHITE).withBold(true))
+                    .append(Text.literal("Net ").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(true)))
+                    .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
+                    .append(Text.literal("Staff Message").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(false)))
+                    .append(Text.literal(" [Hover to see]").setStyle(Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))));
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(notification);
             return false;
         }
