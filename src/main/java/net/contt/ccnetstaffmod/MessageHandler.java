@@ -12,7 +12,8 @@ public class MessageHandler {
     public static boolean handleMessage(Text message, boolean overlay) {
         String messageContent = message.getString();
         boolean isStaffMessage = (messageContent.startsWith("(A)") && messageContent.contains("→")) ||
-                                 messageContent.matches("^\\[[^\\]]+\\] .*».*");
+                                 messageContent.matches("^\\[[^\\]]+\\] .*».*") ||
+                                 messageContent.startsWith("[Silent]");
 
         if (concealMessages && isStaffMessage) {
             Text hoverText = Text.literal(messageContent).setStyle(Style.EMPTY.withColor(Formatting.AQUA));
