@@ -12,22 +12,12 @@ public class MessageHandler {
     public static boolean handleMessage(Text message, boolean overlay) {
         String messageContent = message.getString();
         boolean isSilentMessage = messageContent.startsWith("[Silent]");
-        boolean isAnticheatAlert = messageContent.startsWith("Vulcan");
         boolean isStaffMessage = (messageContent.startsWith("(A)") && messageContent.contains("→")) ||
                 (messageContent.matches("^\\[[^\\]]+\\] .*».*") && !messageContent.startsWith("[Discord]")) ||
                 isSilentMessage;
 
         if (concealMessages && isStaffMessage) {
-            Formatting hoverColor;
-
-            if (isSilentMessage) {
-                hoverColor = Formatting.GREEN;
-            } else if (isAnticheatAlert) {
-                hoverColor = Formatting.RED;
-            } else {
-                hoverColor = Formatting.AQUA;
-            }
-
+            Formatting hoverColor = isSilentMessage ? Formatting.GREEN : Formatting.AQUA;
 
             Text hoverText = Text.literal(messageContent)
                     .setStyle(Style.EMPTY.withColor(hoverColor));
@@ -38,28 +28,19 @@ public class MessageHandler {
                 notification = Text.literal("CC")
                         .setStyle(Style.EMPTY.withColor(Formatting.WHITE).withBold(true))
                         .append(Text.literal("Net ").setStyle(Style.EMPTY.withColor(Formatting.RED).withBold(true)))
-                        .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
-                        .append(Text.literal("Silent Action").setStyle(Style.EMPTY.withColor(Formatting.RED).withBold(false)))
+                        .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY)))
+                        .append(Text.literal("Silent Action").setStyle(Style.EMPTY.withColor(Formatting.RED)))
                         .append(Text.literal(" [Hover to see]").setStyle(
-                                Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
-                        ));
-            } else if (isAnticheatAlert) {
-                notification = Text.literal("CC")
-                        .setStyle(Style.EMPTY.withColor(Formatting.WHITE).withBold(true))
-                        .append(Text.literal("Net ").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(true)))
-                        .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
-                        .append(Text.literal("Vulcan Anticheat Alert").setStyle(Style.EMPTY.withColor(Formatting.DARK_RED).withBold(false)))
-                        .append(Text.literal(" [Hover to see]").setStyle(
-                                Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
+                                Style.EMPTY.withColor(Formatting.AQUA).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
                         ));
             } else {
                 notification = Text.literal("CC")
                         .setStyle(Style.EMPTY.withColor(Formatting.WHITE).withBold(true))
                         .append(Text.literal("Net ").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(true)))
-                        .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
-                        .append(Text.literal("Staff Message").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(false)))
+                        .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY)))
+                        .append(Text.literal("Staff Message").setStyle(Style.EMPTY.withColor(Formatting.GREEN)))
                         .append(Text.literal(" [Hover to see]").setStyle(
-                                Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
+                                Style.EMPTY.withColor(Formatting.AQUA).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
                         ));
             }
 
