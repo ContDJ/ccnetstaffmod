@@ -1,40 +1,37 @@
 {
-	"schemaVersion": 1,
-	"id": "ccnetstaffmod",
-	"version": "1.0.0",
-	"name": "ccnetstaffmod",
-	"description": "Streamlines moderation by filtering out non-public information!",
-	"authors": [
-		"Contt"
-	],
-	"contact": {
-		"homepage": "https://github.com/ContDJ/ccnetstaffmod/",
-		"sources": "https://github.com/ContDJ/ccnetstaffmod/"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/ccnetstaffmod/icon.png",
-	"environment": "client",
-	"entrypoints": {
-		"main": [
-			"net.contt.ccnetstaffmod.Ccnetstaffmod"
-		],
-		"fabric-datagen": [
-			"net.contt.ccnetstaffmod.CcnetstaffmodDataGenerator"
-		],
-		"client": [
-			"net.contt.ccnetstaffmod.ccnetstaffmodClient"
-		]
-	},
-	"mixins": [
-		"ccnetstaffmod.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.21.1",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "ccnetstaffmod",
+  "version": "1.0.0",
+  "name": "ccnetstaffmod",
+  "description": "Streamlines moderation by filtering out non-public information!",
+  "authors": [
+    "Contt"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ContDJ/ccnetstaffmod/",
+    "sources": "https://github.com/ContDJ/ccnetstaffmod/"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/ccnetstaffmod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.contt.ccnetstaffmod.Ccnetstaffmod"
+    ],
+    "fabric-datagen": [
+      "net.contt.ccnetstaffmod.CcnetstaffmodDataGenerator"
+    ]
+  },
+  "mixins": [
+    "ccnetstaffmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
 }
