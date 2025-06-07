@@ -29,7 +29,7 @@ public class MessageHandler {
                         .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
                         .append(Text.literal("Silent Action").setStyle(Style.EMPTY.withColor(Formatting.RED).withBold(false)))
                         .append(Text.literal(" [Hover to see]").setStyle(
-                                Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
+                                Style.EMPTY.withColor(Formatting.GREEN).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
                         ));
             } else {
                 notification = Text.literal("CC")
@@ -38,7 +38,7 @@ public class MessageHandler {
                         .append(Text.literal("» ").setStyle(Style.EMPTY.withColor(Formatting.DARK_GRAY).withBold(false)))
                         .append(Text.literal("Staff Message").setStyle(Style.EMPTY.withColor(Formatting.GREEN).withBold(false)))
                         .append(Text.literal(" [Hover to see]").setStyle(
-                                Style.EMPTY.withColor(Formatting.GREEN).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
+                                Style.EMPTY.withColor(Formatting.AQUA).withBold(false).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, hoverText))
                         ));
             }
 
