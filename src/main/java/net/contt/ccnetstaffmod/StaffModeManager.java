@@ -13,20 +13,20 @@ public class StaffModeManager {
         if (client.player == null) return;
 
         if (enable) {
-            client.getNetworkHandler().sendChatMessage("/godmode enable");
-            client.getNetworkHandler().sendChatMessage("/vanish enable");
-            client.getNetworkHandler().sendChatMessage("/dynmap hide");
-            client.getNetworkHandler().sendChatMessage("/fly enable");
+            client.player.networkHandler.sendChatCommand("godmode enable");
+            client.player.networkHandler.sendChatCommand("vanish enable");
+            client.player.networkHandler.sendChatCommand("dynmap hide");
+            client.player.networkHandler.sendChatCommand("fly enable");
             isStaffModeEnabled = true;
             client.inGameHud.getChatHud().addMessage(
                 Text.literal("Staff mode enabled")
                     .setStyle(Style.EMPTY.withColor(Formatting.GREEN))
             );
         } else {
-            client.getNetworkHandler().sendChatMessage("/godmode disable");
-            client.getNetworkHandler().sendChatMessage("/vanish disable");
-            client.getNetworkHandler().sendChatMessage("/dynmap show");
-            client.getNetworkHandler().sendChatMessage("/fly disable");
+            client.player.networkHandler.sendChatCommand("godmode disable");
+            client.player.networkHandler.sendChatCommand("vanish disable");
+            client.player.networkHandler.sendChatCommand("dynmap show");
+            client.player.networkHandler.sendChatCommand("fly disable");
             isStaffModeEnabled = false;
             client.inGameHud.getChatHud().addMessage(
                 Text.literal("Staff mode disabled")
