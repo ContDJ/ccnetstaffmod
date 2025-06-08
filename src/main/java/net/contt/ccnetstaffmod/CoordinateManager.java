@@ -35,8 +35,8 @@ public class CoordinateManager {
             return;
         }
 
-        String tpCommand = String.format("/tppos %.2f %.2f %.2f", pos.x, pos.y, pos.z);
-        client.getNetworkHandler().sendChatMessage(tpCommand);
+        String tpCommand = String.format("tppos %.2f %.2f %.2f", pos.x, pos.y, pos.z);
+        client.player.networkHandler.sendChatCommand(tpCommand);
         client.inGameHud.getChatHud().addMessage(
             Text.literal("Teleporting to slot " + slot + ": " + String.format("%.2f %.2f %.2f", pos.x, pos.y, pos.z))
                 .setStyle(Style.EMPTY.withColor(Formatting.GREEN))
